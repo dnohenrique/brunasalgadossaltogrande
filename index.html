@@ -1638,20 +1638,41 @@
             );
           }
 
+          function lockScroll() {
+            var y = window.scrollY || window.pageYOffset || 0;
+            document.body.dataset.scrollLockYPhoto = String(y);
+            document.body.style.position = "fixed";
+            document.body.style.top = "-" + y + "px";
+            document.body.style.left = "0";
+            document.body.style.right = "0";
+            document.body.style.width = "100%";
+          }
+
+          function unlockScroll() {
+            var y = parseInt(document.body.dataset.scrollLockYPhoto || "0", 10);
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.left = "";
+            document.body.style.right = "";
+            document.body.style.width = "";
+            delete document.body.dataset.scrollLockYPhoto;
+            window.scrollTo(0, y);
+          }
+
           function openModal(url, caption) {
             if (!url) return;
             imgEl.src = url;
             imgEl.alt = caption || "";
             captionEl.textContent = caption || "";
             overlay.style.display = "flex";
-            document.body.style.overflow = "hidden";
+            lockScroll();
             closeBtn.focus();
           }
 
           function closeModal() {
             overlay.style.display = "none";
             imgEl.src = "";
-            document.body.style.overflow = "";
+            unlockScroll();
           }
 
           document.addEventListener("click", function (e) {
@@ -2161,12 +2182,33 @@
             }
             renderStep();
             overlay.style.display = "flex";
-            document.body.style.overflow = "hidden";
+            lockScroll();
+          }
+
+          function lockScroll() {
+            var y = window.scrollY || window.pageYOffset || 0;
+            document.body.dataset.scrollLockYOrder = String(y);
+            document.body.style.position = "fixed";
+            document.body.style.top = "-" + y + "px";
+            document.body.style.left = "0";
+            document.body.style.right = "0";
+            document.body.style.width = "100%";
+          }
+
+          function unlockScroll() {
+            var y = parseInt(document.body.dataset.scrollLockYOrder || "0", 10);
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.left = "";
+            document.body.style.right = "";
+            document.body.style.width = "";
+            delete document.body.dataset.scrollLockYOrder;
+            window.scrollTo(0, y);
           }
 
           function closeModal() {
             overlay.style.display = "none";
-            document.body.style.overflow = "";
+            unlockScroll();
           }
 
           document.addEventListener("click", function (e) {
