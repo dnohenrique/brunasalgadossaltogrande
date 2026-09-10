@@ -1,6 +1,20 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3Y2F4134KB"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-3Y2F4134KB");
+    </script>
     <link rel="icon" type="image/x-icon" href="./assets/fav.png" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,7 +30,7 @@
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Bruna Salgados" />
     <meta name="theme-color" content="#c14364" />
-    <link rel="canonical" href="https://dnohenrique.github.io/brunasalgadossaltogrande/" />
+    <link rel="canonical" href="https://brunasalgadossaltogrande.com.br" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Bruna Salgados" />
@@ -28,8 +42,11 @@
       property="og:description"
       content="Salgados fritos na hora, pastéis, bebidas geladas e sucos naturais. Entrega e encomendas para festas em Salto Grande, Ourinhos e região. Peça pelo WhatsApp!"
     />
-    <meta property="og:image" content="https://dnohenrique.github.io/brunasalgadossaltogrande/assets/banner.jpeg" />
-    <meta property="og:url" content="https://dnohenrique.github.io/brunasalgadossaltogrande/" />
+    <meta
+      property="og:image"
+      content="brunasalgadossaltogrande.com.br/assets/banner.jpeg"
+    />
+    <meta property="og:url" content="brunasalgadossaltogrande.com.br/" />
     <meta property="og:locale" content="pt_BR" />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -38,7 +55,10 @@
       name="twitter:description"
       content="Salgados fritos na hora, pastéis e bebidas geladas em Salto Grande - SP. Entrega para Salto Grande, Ourinhos e região. Peça pelo WhatsApp!"
     />
-    <meta name="twitter:image" content="https://dnohenrique.github.io/brunasalgadossaltogrande/assets/banner.jpeg" />
+    <meta
+      name="twitter:image"
+      content="brunasalgadossaltogrande.com.br/assets/banner.jpeg"
+    />
 
     <script type="application/ld+json">
       {
@@ -65,7 +85,14 @@
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
             "opens": "09:00",
             "closes": "22:00"
           }
@@ -257,7 +284,10 @@
               max-width: 1120px;
               margin: 0 auto;
               display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+              grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(280px, 100%), 1fr)
+              );
               gap: 36px;
               align-items: center;
             "
@@ -308,7 +338,8 @@
                 "
               >
                 Salgados fritos na hora, salgados para festa, bebidas geladas e
-                sucos naturais em Salto Grande, SP, com entrega para Ourinhos e região.
+                sucos naturais em Salto Grande, SP, com entrega para Ourinhos e
+                região.
               </p>
               <div style="display: flex; gap: 12px; flex-wrap: wrap">
                 <a
@@ -446,7 +477,10 @@
             <div
               style="
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr));
+                grid-template-columns: repeat(
+                  auto-fill,
+                  minmax(min(230px, 100%), 1fr)
+                );
                 gap: 20px;
               "
             >
@@ -469,7 +503,9 @@
                   <div
                     role="img"
                     aria-label="{{ item.nome }}"
-                    style="width:100%;height:160px;background-color:#FCD6E3;background-size:cover;background-position:center;background-image:{{ item.bg }}"
+                    data-photo-modal
+                    tabindex="0"
+                    style="width:100%;height:160px;background-color:#FCD6E3;background-size:cover;background-position:center;background-image:{{ item.bg }};cursor:zoom-in"
                   ></div>
                   <div
                     style="
@@ -523,7 +559,10 @@
             <div
               style="
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(min(300px, 100%), 1fr)
+                );
                 gap: 24px;
                 margin-top: 16px;
               "
@@ -704,7 +743,10 @@
             <div
               style="
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(min(210px, 100%), 1fr)
+                );
                 gap: 18px;
               "
             >
@@ -788,7 +830,10 @@
             <div
               style="
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr));
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(min(190px, 100%), 1fr)
+                );
                 gap: 18px;
               "
             >
@@ -841,7 +886,10 @@
             <div
               style="
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(min(260px, 100%), 1fr)
+                );
                 gap: 20px;
                 background: #fdf2f5;
                 border: 2px dashed #f2b2c3;
@@ -921,7 +969,10 @@
             <div
               style="
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(min(240px, 100%), 1fr)
+                );
                 gap: 20px;
               "
             >
@@ -973,7 +1024,10 @@
               max-width: 1120px;
               margin: 0 auto;
               display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+              grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(280px, 100%), 1fr)
+              );
               gap: 32px;
               align-items: center;
             "
@@ -999,8 +1053,10 @@
                 na loja ou encomenda para a festa.
               </p>
               <p style="font-size: 17px; line-height: 1.6; font-weight: 600">
-                Atendemos Salto Grande e toda a região, incluindo Ourinhos, Chavantes, Canitar, Espírito Santo do Turvo, Bernardino de Campos e cidades vizinhas, com retirada no balcão e
-                entrega combinada pelo WhatsApp.
+                Atendemos Salto Grande e toda a região, incluindo Ourinhos,
+                Chavantes, Canitar, Espírito Santo do Turvo, Bernardino de
+                Campos e cidades vizinhas, com retirada no balcão e entrega
+                combinada pelo WhatsApp.
               </p>
             </div>
             <img
@@ -1033,7 +1089,10 @@
             <div
               style="
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(min(220px, 100%), 1fr)
+                );
                 gap: 16px;
               "
             >
@@ -1089,7 +1148,10 @@
             <div
               style="
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(min(300px, 100%), 1fr)
+                );
                 gap: 24px;
               "
             >
@@ -1113,8 +1175,8 @@
                     SP
                   </p>
                   <p style="font-size: 15px; font-weight: 700; color: #ce6610">
-                    Entregamos também em Ourinhos, Chavantes, Canitar,
-                    Espírito Santo do Turvo, Bernardino de Campos e região.
+                    Entregamos também em Ourinhos, Chavantes, Canitar, Espírito
+                    Santo do Turvo, Bernardino de Campos e região.
                   </p>
                   <a
                     href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Deputado+Ant%C3%B4nio+Silva+Bueno%2C+2460%2C+Salto+Grande+SP"
@@ -1211,7 +1273,10 @@
               max-width: 1120px;
               margin: 0 auto;
               display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+              grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(240px, 100%), 1fr)
+              );
               gap: 28px;
               align-items: start;
             "
@@ -1256,20 +1321,50 @@
                 "
                 >Contato</span
               >
-              <a
-                href="{{ waGeral }}"
-                target="_blank"
-                rel="noopener"
-                style="color: #fff; font-weight: 700"
-                >WhatsApp (14) 99158-1201</a
-              >
-              <a
-                href="https://www.instagram.com/_bruna_salgados/"
-                target="_blank"
-                rel="noopener"
-                style="color: #fff; font-weight: 700"
-                >Instagram @_bruna_salgados</a
-              >
+              <div style="display: flex; gap: 14px; align-items: center">
+                <a
+                  href="{{ waGeral }}"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="WhatsApp (14) 99158-1201"
+                  title="WhatsApp (14) 99158-1201"
+                  style="display: flex; color: #fff"
+                  style-hover="opacity:0.75"
+                >
+                  <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 24 24"
+                    fill="#fff"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.8-.2 1.5Z"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  href="https://www.instagram.com/_bruna_salgados/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Instagram @_bruna_salgados"
+                  title="Instagram @_bruna_salgados"
+                  style="display: flex; color: #fff"
+                  style-hover="opacity:0.75"
+                >
+                  <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 16 16"
+                    fill="#fff"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
               <span>Rua Deputado Antônio Silva Bueno, 2460</span>
               <span>Salto Grande – SP</span>
             </div>
@@ -1385,12 +1480,12 @@
         renderVals() {
           const s = this.status();
           const salgados = [
-            { nome: "Coxinha", desc: "Frango desfiado temperado, massa macia e crocante.", img: "assets/crop-cesta.png" },
-            { nome: "Bolinha queijo", desc: "Queijo derretido por dentro, douradinha por fora.", img: "assets/crop-bolinha.png" },
-            { nome: "Croquete calabresa", desc: "Calabresa bem temperada em massa dourada.", img: "assets/crop-prato.png" },
-            { nome: "Bolinho carne", desc: "Carne moída suculenta, frito na hora.", img: "assets/crop-variados.png" },
-            { nome: "Kibe", desc: "Carne moída com trigo e temperos frescos.", img: "assets/crop-kibe.png" },
-            { nome: "Travesseiro presunto e queijo", desc: "Massa leve recheada de presunto e queijo.", img: "assets/crop-caixa.png" }
+            { nome: "Coxinha", desc: "Frango desfiado temperado, massa macia e crocante.", img: "assets/salgado-coxinha.png" },
+            { nome: "Bolinha queijo", desc: "Queijo derretido por dentro, douradinha por fora.", img: "assets/salgado-bolinha-queijo.jpg" },
+            { nome: "Croquete calabresa", desc: "Calabresa bem temperada em massa dourada.", img: "assets/salgado-croquete-calabresa.jpg" },
+            { nome: "Bolinho carne", desc: "Carne moída suculenta, frito na hora.", img: "assets/salgado-bolinho-carne.jpg" },
+            { nome: "Kibe", desc: "Carne moída com trigo e temperos frescos.", img: "assets/salgado-kibe.jpg" },
+            { nome: "Travesseiro presunto e queijo", desc: "Massa leve recheada de presunto e queijo.", img: "assets/salgado-travesseiro-presunto-queijo.jpg" }
           ].map(it => Object.assign({}, it, {
             bg: "url(" + it.img + ")",
             link: this.wa("Olá! Quero pedir " + it.nome + ".")
@@ -1440,6 +1535,91 @@
           };
         }
       }
+    </script>
+    <div
+      id="photo-modal-overlay"
+      style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(30,10,15,0.88);align-items:center;justify-content:center;padding:32px;cursor:zoom-out"
+    >
+      <button
+        id="photo-modal-close"
+        aria-label="Fechar"
+        style="position:fixed;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:none;background:#fff;color:#c14364;font-size:22px;font-weight:800;cursor:pointer;line-height:1;box-shadow:0 6px 16px rgba(0,0,0,0.3)"
+      >
+        &#10005;
+      </button>
+      <figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:92vw;max-height:88vh">
+        <img
+          id="photo-modal-img"
+          alt=""
+          style="max-width:92vw;max-height:78vh;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;cursor:default"
+        />
+        <figcaption
+          id="photo-modal-caption"
+          style="color:#fff;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:19px;text-align:center"
+        ></figcaption>
+      </figure>
+    </div>
+    <script>
+      (function () {
+        function ready(fn) {
+          if (document.readyState !== "loading") fn();
+          else document.addEventListener("DOMContentLoaded", fn);
+        }
+        ready(function () {
+          var overlay = document.getElementById("photo-modal-overlay");
+          var imgEl = document.getElementById("photo-modal-img");
+          var captionEl = document.getElementById("photo-modal-caption");
+          var closeBtn = document.getElementById("photo-modal-close");
+          if (!overlay || !imgEl) return;
+
+          function extractUrl(bg) {
+            var match = /url\((['"]?)(.*?)\1\)/.exec(bg || "");
+            return match ? match[2] : "";
+          }
+
+          function openModal(url, caption) {
+            if (!url) return;
+            imgEl.src = url;
+            imgEl.alt = caption || "";
+            captionEl.textContent = caption || "";
+            overlay.style.display = "flex";
+            document.body.style.overflow = "hidden";
+            closeBtn.focus();
+          }
+
+          function closeModal() {
+            overlay.style.display = "none";
+            imgEl.src = "";
+            document.body.style.overflow = "";
+          }
+
+          document.addEventListener("click", function (e) {
+            var trigger = e.target.closest("[data-photo-modal]");
+            if (trigger) {
+              var url = extractUrl(getComputedStyle(trigger).backgroundImage);
+              openModal(url, trigger.getAttribute("aria-label"));
+              return;
+            }
+            if (e.target === overlay || e.target === closeBtn) {
+              closeModal();
+            }
+          });
+
+          document.addEventListener("keydown", function (e) {
+            var trigger = document.activeElement;
+            if (
+              (e.key === "Enter" || e.key === " ") &&
+              trigger &&
+              trigger.hasAttribute("data-photo-modal")
+            ) {
+              e.preventDefault();
+              var url = extractUrl(getComputedStyle(trigger).backgroundImage);
+              openModal(url, trigger.getAttribute("aria-label"));
+            }
+            if (e.key === "Escape") closeModal();
+          });
+        });
+      })();
     </script>
   </body>
 </html>
