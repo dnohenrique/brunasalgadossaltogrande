@@ -71,9 +71,10 @@
         "servesCuisine": "Brasileira",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Rua Deputado Antônio Silva Bueno, 2460",
+          "streetAddress": "Av. Dep. Federal Antonio Sylvio Cunha Bueno, 2460",
           "addressLocality": "Salto Grande",
           "addressRegion": "SP",
+          "postalCode": "19920-224",
           "addressCountry": "BR"
         },
         "geo": {
@@ -155,6 +156,27 @@
           html {
             scroll-behavior: smooth;
           }
+          .cardapio-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          @media (max-width: 900px) {
+            .cardapio-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          @media (max-width: 600px) {
+            .cardapio-grid {
+              grid-template-columns: 1fr;
+            }
+          }
+          .bebidas-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          @media (max-width: 600px) {
+            .bebidas-grid {
+              grid-template-columns: 1fr;
+            }
+          }
         </style>
       </helmet>
 
@@ -193,8 +215,8 @@
                 src="assets/logo.jpeg"
                 alt="Bruna Salgados"
                 style="
-                  width: 48px;
-                  height: 48px;
+                  width: 60px;
+                  height: 60px;
                   border-radius: 50%;
                   object-fit: cover;
                   border: 2px solid #f4528b;
@@ -238,6 +260,7 @@
               >
               <a
                 href="{{ waGeral }}"
+                data-order-trigger="geral"
                 target="_blank"
                 rel="noopener"
                 style="
@@ -343,6 +366,7 @@
               <div style="display: flex; gap: 12px; flex-wrap: wrap">
                 <a
                   href="{{ waGeral }}"
+                  data-order-trigger="geral"
                   target="_blank"
                   rel="noopener"
                   style="
@@ -474,14 +498,9 @@
               </p>
             </div>
             <div
-              style="
-                display: grid;
-                grid-template-columns: repeat(
-                  auto-fill,
-                  minmax(min(230px, 100%), 1fr)
-                );
-                gap: 20px;
-              "
+              id="cardapio-grid"
+              class="cardapio-grid"
+              style="display: grid; gap: 20px"
             >
               <sc-for
                 list="{{ salgados }}"
@@ -504,7 +523,7 @@
                     aria-label="{{ item.nome }}"
                     data-photo-modal
                     tabindex="0"
-                    style="width:100%;height:160px;background-color:#FCD6E3;background-size:cover;background-position:center;background-image:{{ item.bg }};cursor:zoom-in"
+                    style="width:100%;height:160px;background-color:#FCD6E3;background-size:cover;background-position:top;background-image:{{ item.bg }};cursor:zoom-in"
                   ></div>
                   <div
                     style="
@@ -528,24 +547,6 @@
                     >
                       {{ item.desc }}
                     </p>
-                    <a
-                      href="{{ item.link }}"
-                      target="_blank"
-                      rel="noopener"
-                      style="
-                        margin-top: 6px;
-                        text-align: center;
-                        background: #f4528b;
-                        color: #fff;
-                        text-decoration: none;
-                        padding: 11px 16px;
-                        border-radius: 999px;
-                        font-weight: 800;
-                        font-size: 15px;
-                      "
-                      style-hover="background:#C14364"
-                      >Pedir este</a
-                    >
                   </div>
                 </article>
               </sc-for>
@@ -554,6 +555,23 @@
               Sabores do dia e valores pelo WhatsApp (14) 99158-1201. Imagens
               ilustrativas.
             </p>
+            <a
+              href="{{ waSalgados }}" data-order-trigger="salgados"
+              target="_blank"
+              rel="noopener"
+              style="
+                align-self: flex-start;
+                background: #f4528b;
+                color: #fff;
+                text-decoration: none;
+                padding: 14px 26px;
+                border-radius: 999px;
+                font-weight: 800;
+                font-size: 16px;
+              "
+              style-hover="background:#C14364"
+              >Quero pedir salgados</a
+            >
 
             <div
               style="
@@ -595,7 +613,10 @@
                   "
                 >
                   <h3 style="font-size: 26px; color: #c14364">Pastéis</h3>
-                  <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                  <div
+                    id="pasteis-salgados-badges"
+                    style="display: flex; flex-wrap: wrap; gap: 8px"
+                  >
                     <sc-for
                       list="{{ pasteis }}"
                       as="p"
@@ -614,23 +635,6 @@
                       >
                     </sc-for>
                   </div>
-                  <a
-                    href="{{ waPasteis }}"
-                    target="_blank"
-                    rel="noopener"
-                    style="
-                      align-self: flex-start;
-                      background: #f4528b;
-                      color: #fff;
-                      text-decoration: none;
-                      padding: 11px 20px;
-                      border-radius: 999px;
-                      font-weight: 800;
-                      font-size: 15px;
-                    "
-                    style-hover="background:#C14364"
-                    >Pedir pastel</a
-                  >
                 </div>
               </div>
               <div
@@ -662,7 +666,10 @@
                   "
                 >
                   <h3 style="font-size: 26px; color: #c14364">Pastéis doces</h3>
-                  <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                  <div
+                    id="pasteis-doces-badges"
+                    style="display: flex; flex-wrap: wrap; gap: 8px"
+                  >
                     <sc-for
                       list="{{ doces }}"
                       as="d"
@@ -681,26 +688,26 @@
                       >
                     </sc-for>
                   </div>
-                  <a
-                    href="{{ waDoces }}"
-                    target="_blank"
-                    rel="noopener"
-                    style="
-                      align-self: flex-start;
-                      background: #f4528b;
-                      color: #fff;
-                      text-decoration: none;
-                      padding: 11px 20px;
-                      border-radius: 999px;
-                      font-weight: 800;
-                      font-size: 15px;
-                    "
-                    style-hover="background:#C14364"
-                    >Pedir doce</a
-                  >
                 </div>
               </div>
             </div>
+            <a
+              href="{{ waPasteis }}" data-order-trigger="pasteis"
+              target="_blank"
+              rel="noopener"
+              style="
+                align-self: flex-start;
+                background: #f4528b;
+                color: #fff;
+                text-decoration: none;
+                padding: 14px 26px;
+                border-radius: 999px;
+                font-weight: 800;
+                font-size: 16px;
+              "
+              style-hover="background:#C14364"
+              >Quero pedir pastéis</a
+            >
           </div>
         </section>
 
@@ -729,49 +736,49 @@
                 Bebidas geladas
               </h2>
             </div>
-            <img
-              src="assets/crop-bebidas-wide.png"
-              alt="Bebidas geladas"
-              style="
-                width: 100%;
-                max-width: 720px;
-                border-radius: 22px;
-                display: block;
-              "
-            />
             <div
-              style="
-                display: grid;
-                grid-template-columns: repeat(
-                  auto-fit,
-                  minmax(min(210px, 100%), 1fr)
-                );
-                gap: 18px;
-              "
+              id="bebidas-grid"
+              class="bebidas-grid"
+              style="display: grid; gap: 18px"
             >
               <sc-for list="{{ bebidas }}" as="b" hint-placeholder-count="4">
                 <div
                   style="
                     background: #fdf2f5;
                     border-radius: 20px;
-                    padding: 22px;
+                    overflow: hidden;
                     display: flex;
                     flex-direction: column;
-                    gap: 8px;
                     border: 2px solid #fff;
                   "
                 >
-                  <h3 style="font-size: 22px; color: #c14364">{{ b.nome }}</h3>
-                  <p
-                    style="font-size: 15px; font-weight: 600; line-height: 1.45"
+                  <div
+                    role="img"
+                    aria-label="{{ b.nome }}"
+                    data-photo-modal
+                    tabindex="0"
+                    style="width:100%;height:160px;background-color:#FCD6E3;background-size:cover;background-position:top;background-image:{{ b.bg }};cursor:zoom-in"
+                  ></div>
+                  <div
+                    style="
+                      padding: 16px 18px 18px;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 8px;
+                    "
                   >
-                    {{ b.desc }}
-                  </p>
+                    <h3 style="font-size: 22px; color: #c14364">{{ b.nome }}</h3>
+                    <p
+                      style="font-size: 15px; font-weight: 600; line-height: 1.45"
+                    >
+                      {{ b.desc }}
+                    </p>
+                  </div>
                 </div>
               </sc-for>
             </div>
             <a
-              href="{{ waBebidas }}"
+              href="{{ waBebidas }}" data-order-trigger="bebidas"
               target="_blank"
               rel="noopener"
               style="
@@ -827,6 +834,7 @@
               </p>
             </div>
             <div
+              id="pacotes-grid"
               style="
                 display: grid;
                 grid-template-columns: repeat(
@@ -837,12 +845,8 @@
               "
             >
               <sc-for list="{{ pacotes }}" as="p" hint-placeholder-count="5">
-                <a
-                  href="{{ p.link }}"
-                  target="_blank"
-                  rel="noopener"
+                <div
                   style="
-                    text-decoration: none;
                     background: linear-gradient(
                       180deg,
                       #f4528b 0%,
@@ -856,7 +860,6 @@
                     gap: 6px;
                     box-shadow: 0 8px 20px rgba(193, 67, 100, 0.22);
                   "
-                  style-hover="transform:translateY(-3px)"
                 >
                   <span
                     style="
@@ -870,16 +873,7 @@
                   <span style="font-weight: 700; font-size: 15px"
                     >{{ p.rotulo }}</span
                   >
-                  <span
-                    style="
-                      font-weight: 800;
-                      font-size: 14px;
-                      margin-top: 10px;
-                      text-decoration: underline;
-                    "
-                    >Pedir orçamento</span
-                  >
-                </a>
+                </div>
               </sc-for>
             </div>
             <div
@@ -933,6 +927,23 @@
                 </div>
               </sc-for>
             </div>
+            <a
+              href="{{ waEncomenda }}" data-order-trigger="encomenda"
+              target="_blank"
+              rel="noopener"
+              style="
+                align-self: flex-start;
+                background: #f4528b;
+                color: #fff;
+                text-decoration: none;
+                padding: 14px 26px;
+                border-radius: 999px;
+                font-weight: 800;
+                font-size: 16px;
+              "
+              style-hover="background:#C14364"
+              >Quero fazer minha encomenda</a
+            >
           </div>
         </section>
 
@@ -1045,13 +1056,13 @@
               <h2 style="font-size: clamp(30px, 4.5vw, 44px); color: #c14364">
                 A Bruna Salgados
               </h2>
-              <p style="font-size: 17px; line-height: 1.6; font-weight: 600">
+              <p style="font-size: 17px; line-height: 1.6; font-weight: 600; text-align: justify">
                 Somos um negócio de família em Salto Grande. Trabalhamos com
                 salgados de estufa, salgados de festa, bebidas e sucos naturais,
                 tudo preparado no capricho e servido quentinho para quem passa
                 na loja ou encomenda para a festa.
               </p>
-              <p style="font-size: 17px; line-height: 1.6; font-weight: 600">
+              <p style="font-size: 17px; line-height: 1.6; font-weight: 600; text-align: justify">
                 Atendemos Salto Grande e toda a região, incluindo Ourinhos,
                 Chavantes, Canitar, Espírito Santo do Turvo, Bernardino de
                 Campos e cidades vizinhas, com retirada no balcão e entrega
@@ -1122,7 +1133,7 @@
                   style="cursor: zoom-in"
                   shape="rounded"
                   radius="20"
-                  placeholder="Foto da loja por dentro"
+                  placeholder="Salgados prontos, fresquinhos do dia"
                 ></image-slot>
               </div>
               <div style="height: 220px">
@@ -1178,7 +1189,7 @@
                   <p
                     style="font-size: 17px; font-weight: 600; line-height: 1.5"
                   >
-                    Rua Deputado Antônio Silva Bueno, 2460<br />Salto Grande –
+                    Av. Dep. Federal Antonio Sylvio Cunha Bueno, 2460<br />Salto Grande –
                     SP
                   </p>
                   <p style="font-size: 15px; font-weight: 700; color: #ce6610">
@@ -1186,7 +1197,7 @@
                     Santo do Turvo, Bernardino de Campos e região.
                   </p>
                   <a
-                    href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Deputado+Ant%C3%B4nio+Silva+Bueno%2C+2460%2C+Salto+Grande+SP"
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Avenida+Deputado+Federal+Antonio+Sylvio+Cunha+Bueno%2C+2460%2C+Salto+Grande+-+SP%2C+19920-224"
                     target="_blank"
                     rel="noopener"
                     style="font-weight: 800"
@@ -1208,10 +1219,8 @@
                   <p
                     style="font-size: 17px; font-weight: 700; line-height: 1.5"
                   >
-                    Todos os dias, das 09:00 às 22:00
-                  </p>
-                  <p style="font-size: 16px; font-weight: 700; color: #ce6610">
-                    Quarta-feira não tem atendimento
+                    Todos os dias, das 09h às 22h exceto às quartas-feiras
+                    (não há atendimento)
                   </p>
                 </div>
                 <div
@@ -1252,7 +1261,7 @@
               <div style="display: flex; flex-direction: column; gap: 18px">
                 <iframe
                   title="Mapa Bruna Salgados"
-                  src="https://www.google.com/maps?q=Rua%20Deputado%20Ant%C3%B4nio%20Silva%20Bueno%2C%202460%2C%20Salto%20Grande%20-%20SP&amp;output=embed"
+                  src="https://www.google.com/maps?q=Avenida%20Deputado%20Federal%20Antonio%20Sylvio%20Cunha%20Bueno%2C%202460%2C%20Salto%20Grande%20-%20SP%2C%2019920-224&amp;output=embed"
                   style="
                     width: 100%;
                     min-height: 300px;
@@ -1262,11 +1271,37 @@
                   "
                   loading="lazy"
                 ></iframe>
-                <img
-                  src="assets/horario.jpeg"
-                  alt="Horário de funcionamento"
-                  style="width: 100%; border-radius: 22px; object-fit: cover"
-                />
+                <div
+                  style="
+                    background: #c14364;
+                    color: #fff;
+                    border-radius: 22px;
+                    padding: 28px 24px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    flex: 1;
+                    min-height: 220px;
+                  "
+                >
+                  <h3
+                    style="
+                      font-family: &quot;Baloo 2&quot;, sans-serif;
+                      font-size: 22px;
+                      font-weight: 800;
+                      color: #fcd6e3;
+                    "
+                  >
+                    Horário de funcionamento
+                  </h3>
+                  <p style="font-size: 18px; font-weight: 700; line-height: 1.5">
+                    Todos os dias, das 09h às 22h exceto às quartas-feiras
+                    (não há atendimento)
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -1372,7 +1407,7 @@
                   </svg>
                 </a>
               </div>
-              <span>Rua Deputado Antônio Silva Bueno, 2460</span>
+              <span>Av. Dep. Federal Antonio Sylvio Cunha Bueno, 2460</span>
               <span>Salto Grande – SP</span>
             </div>
             <div
@@ -1393,7 +1428,7 @@
                 "
                 >Atendimento</span
               >
-              <span>Todos os dias, 09:00 às 22:00</span>
+              <span>Todos os dias, 9h às 22h</span>
               <span>Quarta-feira fechado</span>
               <span>Retirada no local e entrega</span>
             </div>
@@ -1430,6 +1465,7 @@
 
         <a
           href="{{ waGeral }}"
+          data-order-trigger="geral"
           target="_blank"
           rel="noopener"
           aria-label="Pedir pelo WhatsApp"
@@ -1481,8 +1517,8 @@
           const now = new Date();
           const d = now.getDay(), h = now.getHours();
           if (d === 3) return { txt: "Hoje é quarta — fechado, mas pode encomendar", cor: "#F19831" };
-          if (h >= 9 && h < 22) return { txt: "Aberto agora até as 22:00", cor: "#25D366" };
-          return { txt: "Fechado agora — abrimos às 09:00", cor: "#F19831" };
+          if (h >= 9 && h < 22) return { txt: "Aberto agora até as 22h", cor: "#25D366" };
+          return { txt: "Fechado agora — abrimos às 09h", cor: "#F19831" };
         }
         renderVals() {
           const s = this.status();
@@ -1512,8 +1548,9 @@
             statusCor: s.cor,
             waGeral: this.wa("Olá! Vim pelo site e quero fazer um pedido."),
             waBebidas: this.wa("Olá! Quero saber as bebidas disponíveis e os preços."),
-            waPasteis: this.wa("Olá! Quero pedir pastel."),
-            waDoces: this.wa("Olá! Quero pedir pastel doce."),
+            waSalgados: this.wa("Olá! Quero pedir salgados."),
+            waPasteis: this.wa("Olá! Quero pedir pastéis."),
+            waEncomenda: this.wa("Olá! Quero fazer uma encomenda para festa."),
             salgados,
             pacotes,
             pasteis: [
@@ -1523,11 +1560,11 @@
             ],
             doces: ["Chocolate", "Romeu e Julieta"],
             bebidas: [
-              { nome: "Refrigerantes", desc: "Lata, 600 ml e garrafa de 2 litros, sempre gelados." },
-              { nome: "Água mineral", desc: "Com e sem gás." },
-              { nome: "Cerveja gelada", desc: "Lata e long neck para levar ou consumir na hora." },
-              { nome: "Sucos naturais", desc: "Feitos com fruta de verdade, na hora do pedido." }
-            ],
+              { nome: "Refrigerantes", desc: "Lata, 600 ml e garrafa de 2 litros, sempre gelados.", img: "assets/bebida-refrigerantes.jpg" },
+              { nome: "Água mineral", desc: "Com e sem gás.", img: "assets/bebida-agua-mineral.jpg" },
+              { nome: "Cerveja gelada", desc: "Lata e long neck para levar ou consumir na hora.", img: "assets/bebida-cerveja-gelada.jpg" },
+              { nome: "Sucos naturais", desc: "Feitos com fruta de verdade, na hora do pedido.", img: "assets/bebida-sucos-naturais.jpg" }
+            ].map(it => Object.assign({}, it, { bg: "url(" + it.img + ")" })),
             convidados: [
               { pessoas: "3 convidados", salgados: "30 salgados" },
               { pessoas: "5 convidados", salgados: "50 salgados" },
@@ -1643,5 +1680,558 @@
         });
       })();
     </script>
+    <div
+      id="order-modal-overlay"
+      style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(30,10,15,0.75);align-items:center;justify-content:center;padding:16px"
+    >
+      <div
+        id="order-modal-card"
+        style="background:#fff;border-radius:26px;max-width:640px;width:100%;max-height:92vh;overflow-y:auto;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,0.35);font-family:'Nunito',sans-serif;color:#7f2d20"
+      >
+        <div
+          style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 24px;border-bottom:2px solid #fcd6e3;position:sticky;top:0;background:#fff;border-radius:26px 26px 0 0;z-index:1"
+        >
+          <div>
+            <span
+              style="font-weight:800;color:#ce6610;letter-spacing:0.08em;text-transform:uppercase;font-size:12px"
+              >Bruna Salgados</span
+            >
+            <h3 style="font-family:'Baloo 2',sans-serif;font-size:21px;color:#c14364;margin:2px 0 0">
+              Fazer pedido
+            </h3>
+          </div>
+          <button
+            id="order-modal-close"
+            type="button"
+            aria-label="Fechar"
+            style="flex:0 0 auto;width:40px;height:40px;border-radius:50%;border:none;background:#fdf2f5;color:#c14364;font-size:18px;font-weight:800;cursor:pointer;line-height:1"
+          >
+            &#10005;
+          </button>
+        </div>
+        <div
+          id="order-modal-steps"
+          style="display:flex;gap:6px;padding:14px 24px 0"
+        ></div>
+        <div
+          id="order-modal-body"
+          style="padding:18px 24px 6px;display:flex;flex-direction:column;gap:16px;flex:1;min-height:220px"
+        ></div>
+        <div
+          id="order-modal-hint"
+          style="padding:0 24px;font-size:13px;font-weight:700;color:#ce6610;min-height:18px"
+        ></div>
+        <div
+          style="display:flex;justify-content:space-between;gap:12px;padding:16px 24px 22px;border-top:2px solid #fcd6e3;position:sticky;bottom:0;background:#fff;border-radius:0 0 26px 26px"
+        >
+          <button
+            id="order-modal-back"
+            type="button"
+            style="background:#fff;color:#c14364;border:2px solid #f4528b;border-radius:999px;padding:12px 22px;font-weight:800;font-size:15px;cursor:pointer;font-family:'Nunito',sans-serif"
+          >
+            Voltar
+          </button>
+          <button
+            id="order-modal-next"
+            type="button"
+            style="background:#f4528b;color:#fff;border:none;border-radius:999px;padding:12px 26px;font-weight:800;font-size:15px;cursor:pointer;font-family:'Nunito',sans-serif"
+          >
+            Avançar
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        function ready(fn) {
+          if (document.readyState !== "loading") fn();
+          else document.addEventListener("DOMContentLoaded", fn);
+        }
+
+        ready(function () {
+          var overlay = document.getElementById("order-modal-overlay");
+          var body = document.getElementById("order-modal-body");
+          var stepsEl = document.getElementById("order-modal-steps");
+          var hintEl = document.getElementById("order-modal-hint");
+          var closeBtn = document.getElementById("order-modal-close");
+          var backBtn = document.getElementById("order-modal-back");
+          var nextBtn = document.getElementById("order-modal-next");
+          if (!overlay || !body) return;
+
+          var PAGAMENTOS = ["Pix", "Cartão de crédito", "Cartão de débito", "Dinheiro", "Vale-alimentação"];
+
+          function freshState() {
+            return {
+              step: 0,
+              tipo: null,
+              pacote: null,
+              eventoData: "",
+              categoria: "salgados",
+              itens: {},
+              entrega: null,
+              endereco: { rua: "", numero: "", bairro: "", complemento: "", referencia: "" },
+              pagamento: null,
+              nomeCliente: "",
+              observacoes: ""
+            };
+          }
+          var state = freshState();
+          var catalog = null;
+
+          function buildCatalog() {
+            var cat = { salgados: [], pasteisSalgados: [], pasteisDoces: [], bebidas: [], pacotes: [] };
+            document.querySelectorAll("#cardapio-grid article").forEach(function (art) {
+              var h3 = art.querySelector("h3");
+              if (h3) {
+                var nome = h3.textContent.trim();
+                cat.salgados.push({ key: "salgado:" + nome, nome: nome });
+              }
+            });
+            document.querySelectorAll("#pasteis-salgados-badges span").forEach(function (sp) {
+              var nome = sp.textContent.trim();
+              if (nome) cat.pasteisSalgados.push({ key: "pastelsalgado:" + nome, nome: nome });
+            });
+            document.querySelectorAll("#pasteis-doces-badges span").forEach(function (sp) {
+              var nome = sp.textContent.trim();
+              if (nome) cat.pasteisDoces.push({ key: "pasteldoce:" + nome, nome: nome });
+            });
+            document.querySelectorAll("#bebidas-grid > div").forEach(function (card) {
+              var h3 = card.querySelector("h3");
+              if (h3) {
+                var nome = h3.textContent.trim();
+                cat.bebidas.push({ key: "bebida:" + nome, nome: nome });
+              }
+            });
+            document.querySelectorAll("#pacotes-grid > div").forEach(function (card) {
+              var spans = card.querySelectorAll("span");
+              if (spans.length >= 2) {
+                cat.pacotes.push({ qtd: spans[0].textContent.trim(), rotulo: spans[1].textContent.trim() });
+              }
+            });
+            return cat;
+          }
+
+          function findWaNumber() {
+            var link = document.querySelector('a[href*="wa.me/"]');
+            if (link) {
+              var m = /wa\.me\/(\d+)/.exec(link.getAttribute("href") || "");
+              if (m) return m[1];
+            }
+            return "5514991581201";
+          }
+
+          function esc(str) {
+            return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {
+              return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+            });
+          }
+
+          function itemCount() {
+            var n = 0;
+            Object.keys(state.itens).forEach(function (k) {
+              n += state.itens[k].qtd || 0;
+            });
+            return n;
+          }
+
+          function stepList() {
+            if (state.tipo === "encomenda") return ["tipo", "pacote", "entrega", "pagamento", "final"];
+            return ["tipo", "itens", "entrega", "pagamento", "final"];
+          }
+
+          function renderDots() {
+            var steps = stepList();
+            stepsEl.innerHTML = steps
+              .map(function (s, i) {
+                var active = i === state.step;
+                var done = i < state.step;
+                var bg = active ? "#f4528b" : done ? "#fcd6e3" : "#f3e4e9";
+                return (
+                  '<span style="flex:1;height:6px;border-radius:999px;background:' +
+                  bg +
+                  '"></span>'
+                );
+              })
+              .join("");
+          }
+
+          function choiceBtn(opts) {
+            var selected = opts.selected;
+            var base =
+              "background:" + (selected ? "#fff0f5" : "#fdf2f5") +
+              ";border:2px solid " + (selected ? "#f4528b" : "#fcd6e3") +
+              ";border-radius:18px;padding:18px 14px;font-weight:800;color:" +
+              (selected ? "#c14364" : "#7f2d20") +
+              ";font-size:15px;cursor:pointer;text-align:center;font-family:'Nunito',sans-serif;line-height:1.3";
+            return (
+              '<button type="button" class="om-choice" data-role="' +
+              esc(opts.role) +
+              '" data-value="' +
+              esc(opts.value) +
+              '" style="' +
+              base +
+              '">' +
+              opts.label +
+              "</button>"
+            );
+          }
+
+          function stepperRow(item) {
+            var qtd = (state.itens[item.key] && state.itens[item.key].qtd) || 0;
+            return (
+              '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fdf2f5;border:2px solid #fff;border-radius:16px;padding:10px 14px">' +
+              '<span style="font-weight:700;font-size:15px">' + esc(item.nome) + "</span>" +
+              '<div style="display:flex;align-items:center;gap:10px">' +
+              '<button type="button" class="om-qtd-btn" data-key="' + esc(item.key) + '" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:2px solid #f4528b;background:#fff;color:#c14364;font-weight:800;font-size:18px;cursor:pointer;line-height:1">−</button>' +
+              '<span style="min-width:22px;text-align:center;font-weight:800;color:#c14364">' + qtd + "</span>" +
+              '<button type="button" class="om-qtd-btn" data-key="' + esc(item.key) + '" data-nome="' + esc(item.nome) + '" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#f4528b;color:#fff;font-weight:800;font-size:18px;cursor:pointer;line-height:1">+</button>' +
+              "</div></div>"
+            );
+          }
+
+          function labelInput(labelText, id, value, placeholder) {
+            return (
+              '<label style="display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14px;color:#7f2d20">' +
+              esc(labelText) +
+              '<input type="text" id="' +
+              id +
+              '" value="' +
+              esc(value) +
+              '" placeholder="' +
+              esc(placeholder || "") +
+              '" style="padding:12px 14px;border-radius:12px;border:2px solid #fcd6e3;font-size:15px;font-family:\'Nunito\',sans-serif" />' +
+              "</label>"
+            );
+          }
+
+          function renderStep() {
+            renderDots();
+            var steps = stepList();
+            var key = steps[state.step];
+            hintEl.textContent = "";
+            backBtn.style.visibility = state.step === 0 ? "hidden" : "visible";
+            nextBtn.textContent = key === "final" ? "Enviar pedido pelo WhatsApp" : "Avançar";
+
+            if (key === "tipo") {
+              body.innerHTML =
+                '<h4 style="font-size:18px;color:#c14364;margin:0">O que você quer pedir?</h4>' +
+                '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px">' +
+                choiceBtn({ role: "tipo", value: "avulso", label: "🍽️<br>Pedido do dia<br><span style=\"font-weight:600;font-size:12px\">salgados, pastéis ou bebidas</span>", selected: state.tipo === "avulso" }) +
+                choiceBtn({ role: "tipo", value: "encomenda", label: "🎉<br>Encomenda para festa", selected: state.tipo === "encomenda" }) +
+                "</div>";
+              return;
+            }
+
+            if (key === "pacote") {
+              var pacHtml = catalog.pacotes
+                .map(function (p) {
+                  return choiceBtn({
+                    role: "pacote",
+                    value: p.qtd + "|" + p.rotulo,
+                    label: p.qtd + '<br><span style="font-weight:600;font-size:12px">' + esc(p.rotulo) + "</span>",
+                    selected: !!(state.pacote && state.pacote.qtd === p.qtd)
+                  });
+                })
+                .join("");
+              body.innerHTML =
+                '<h4 style="font-size:18px;color:#c14364;margin:0">Qual pacote?</h4>' +
+                '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:10px">' +
+                pacHtml +
+                "</div>" +
+                '<label style="display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14px">Data do evento (opcional)' +
+                '<input type="date" id="om-evento-data" value="' + esc(state.eventoData) + '" style="padding:12px 14px;border-radius:12px;border:2px solid #fcd6e3;font-size:15px;font-family:\'Nunito\',sans-serif" />' +
+                "</label>";
+              return;
+            }
+
+            if (key === "itens") {
+              var cats = [
+                { id: "salgados", label: "Salgados", list: catalog.salgados },
+                { id: "pasteisSalgados", label: "Pastéis salgados", list: catalog.pasteisSalgados },
+                { id: "pasteisDoces", label: "Pastéis doces", list: catalog.pasteisDoces },
+                { id: "bebidas", label: "Bebidas", list: catalog.bebidas }
+              ].filter(function (c) {
+                return c.list.length > 0;
+              });
+              var tabsHtml = cats
+                .map(function (c) {
+                  var active = state.categoria === c.id;
+                  return (
+                    '<button type="button" class="om-tab" data-cat="' +
+                    c.id +
+                    '" style="background:' + (active ? "#f4528b" : "#fdf2f5") +
+                    ";color:" + (active ? "#fff" : "#7f2d20") +
+                    ';border:none;border-radius:999px;padding:8px 16px;font-weight:800;font-size:13px;cursor:pointer;font-family:\'Nunito\',sans-serif">' +
+                    c.label +
+                    "</button>"
+                  );
+                })
+                .join("");
+              var current = cats.filter(function (c) {
+                return c.id === state.categoria;
+              })[0] || cats[0];
+              var listHtml = current
+                ? '<div style="display:flex;flex-direction:column;gap:8px">' +
+                  current.list.map(stepperRow).join("") +
+                  "</div>"
+                : '<p style="font-size:14px;font-weight:600">Nenhum item disponível.</p>';
+              body.innerHTML =
+                '<h4 style="font-size:18px;color:#c14364;margin:0">Escolha os itens</h4>' +
+                '<div style="display:flex;flex-wrap:wrap;gap:8px">' + tabsHtml + "</div>" +
+                listHtml +
+                '<p style="font-size:14px;font-weight:800;color:#c14364;margin:0">Itens selecionados: ' + itemCount() + "</p>";
+              return;
+            }
+
+            if (key === "entrega") {
+              var end = state.endereco;
+              body.innerHTML =
+                '<h4 style="font-size:18px;color:#c14364;margin:0">Entrega ou retirada?</h4>' +
+                '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:12px">' +
+                choiceBtn({ role: "entrega", value: "retirada", label: "🏠<br>Retirar na loja", selected: state.entrega === "retirada" }) +
+                choiceBtn({ role: "entrega", value: "entrega", label: "🚚<br>Entrega", selected: state.entrega === "entrega" }) +
+                "</div>" +
+                (state.entrega === "entrega"
+                  ? '<div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">' +
+                    labelInput("Rua/Avenida e número", "om-end-rua", end.rua) +
+                    labelInput("Bairro", "om-end-bairro", end.bairro) +
+                    labelInput("Complemento (opcional)", "om-end-complemento", end.complemento) +
+                    labelInput("Ponto de referência (opcional)", "om-end-referencia", end.referencia) +
+                    "</div>"
+                  : "");
+              return;
+            }
+
+            if (key === "pagamento") {
+              var payHtml = PAGAMENTOS.map(function (p) {
+                return choiceBtn({ role: "pagamento", value: p, label: esc(p), selected: state.pagamento === p });
+              }).join("");
+              body.innerHTML =
+                '<h4 style="font-size:18px;color:#c14364;margin:0">Forma de pagamento</h4>' +
+                '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(160px,100%),1fr));gap:10px">' +
+                payHtml +
+                "</div>";
+              return;
+            }
+
+            if (key === "final") {
+              body.innerHTML =
+                '<h4 style="font-size:18px;color:#c14364;margin:0">Últimos dados</h4>' +
+                labelInput("Seu nome", "om-nome", state.nomeCliente) +
+                '<label style="display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14px">Observações (opcional)' +
+                '<textarea id="om-obs" rows="2" style="padding:12px 14px;border-radius:12px;border:2px solid #fcd6e3;font-size:15px;font-family:\'Nunito\',sans-serif;resize:vertical">' + esc(state.observacoes) + "</textarea>" +
+                "</label>" +
+                '<div style="background:#fdf2f5;border-radius:16px;padding:14px 16px;font-size:14px;font-weight:700;white-space:pre-wrap;line-height:1.5">' +
+                esc(buildMessage()) +
+                "</div>";
+              return;
+            }
+          }
+
+          function buildMessage() {
+            var lines = ["Olá! Quero fazer um pedido pelo site da Bruna Salgados:", ""];
+            if (state.tipo === "encomenda") {
+              lines.push("🎉 Encomenda para festa");
+              if (state.pacote) lines.push("📦 Pacote: " + state.pacote.qtd + " " + state.pacote.rotulo);
+              if (state.eventoData) lines.push("📅 Data do evento: " + state.eventoData);
+            } else {
+              lines.push("🛒 Itens do pedido:");
+              var any = false;
+              Object.keys(state.itens).forEach(function (k) {
+                var it = state.itens[k];
+                if (it.qtd > 0) {
+                  lines.push("- " + it.qtd + "x " + it.nome);
+                  any = true;
+                }
+              });
+              if (!any) lines.push("(nenhum item selecionado)");
+            }
+            lines.push("");
+            if (state.entrega === "entrega") {
+              lines.push("🚚 Entrega");
+              var end = state.endereco;
+              var parts = [];
+              if (end.rua) parts.push(end.rua);
+              if (end.bairro) parts.push("Bairro " + end.bairro);
+              if (end.complemento) parts.push(end.complemento);
+              if (end.referencia) parts.push("Referência: " + end.referencia);
+              if (parts.length) lines.push("📍 " + parts.join(", "));
+            } else if (state.entrega === "retirada") {
+              lines.push("🏠 Retirada na loja");
+            }
+            if (state.pagamento) lines.push("💳 Pagamento: " + state.pagamento);
+            if (state.observacoes) lines.push("📝 Obs: " + state.observacoes);
+            if (state.nomeCliente) {
+              lines.push("");
+              lines.push("👤 Nome: " + state.nomeCliente);
+            }
+            return lines.join("\n");
+          }
+
+          function collectStepInputs() {
+            var steps = stepList();
+            var key = steps[state.step];
+            if (key === "pacote") {
+              var d = document.getElementById("om-evento-data");
+              if (d) state.eventoData = d.value;
+            }
+            if (key === "entrega" && state.entrega === "entrega") {
+              var rua = document.getElementById("om-end-rua");
+              var bairro = document.getElementById("om-end-bairro");
+              var comp = document.getElementById("om-end-complemento");
+              var ref = document.getElementById("om-end-referencia");
+              if (rua) state.endereco.rua = rua.value;
+              if (bairro) state.endereco.bairro = bairro.value;
+              if (comp) state.endereco.complemento = comp.value;
+              if (ref) state.endereco.referencia = ref.value;
+            }
+            if (key === "final") {
+              var nome = document.getElementById("om-nome");
+              var obs = document.getElementById("om-obs");
+              if (nome) state.nomeCliente = nome.value;
+              if (obs) state.observacoes = obs.value;
+            }
+          }
+
+          function validateStep() {
+            var steps = stepList();
+            var key = steps[state.step];
+            if (key === "tipo" && !state.tipo) return "Escolha uma opção para continuar.";
+            if (key === "pacote" && !state.pacote) return "Escolha um pacote.";
+            if (key === "itens" && itemCount() === 0) return "Escolha ao menos um item.";
+            if (key === "entrega") {
+              if (!state.entrega) return "Escolha entrega ou retirada.";
+              if (state.entrega === "entrega" && !state.endereco.rua) return "Informe o endereço para entrega.";
+            }
+            if (key === "pagamento" && !state.pagamento) return "Escolha a forma de pagamento.";
+            if (key === "final" && !state.nomeCliente) return "Informe seu nome.";
+            return null;
+          }
+
+          function goNext() {
+            collectStepInputs();
+            var err = validateStep();
+            if (err) {
+              hintEl.textContent = err;
+              return;
+            }
+            var steps = stepList();
+            var key = steps[state.step];
+            if (key === "final") {
+              submitOrder();
+              return;
+            }
+            state.step++;
+            renderStep();
+          }
+
+          function goBack() {
+            collectStepInputs();
+            if (state.step > 0) {
+              state.step--;
+              renderStep();
+            }
+          }
+
+          function submitOrder() {
+            var msg = buildMessage();
+            var url = "https://wa.me/" + findWaNumber() + "?text=" + encodeURIComponent(msg);
+            window.open(url, "_blank", "noopener");
+            closeModal();
+          }
+
+          function openModal(trigger) {
+            if (!catalog) catalog = buildCatalog();
+            state = freshState();
+            if (trigger === "encomenda") {
+              state.tipo = "encomenda";
+              state.step = 1;
+            } else if (trigger === "salgados") {
+              state.tipo = "avulso";
+              state.categoria = "salgados";
+              state.step = 1;
+            } else if (trigger === "pasteis") {
+              state.tipo = "avulso";
+              state.categoria = "pasteisSalgados";
+              state.step = 1;
+            } else if (trigger === "bebidas") {
+              state.tipo = "avulso";
+              state.categoria = "bebidas";
+              state.step = 1;
+            }
+            renderStep();
+            overlay.style.display = "flex";
+            document.body.style.overflow = "hidden";
+          }
+
+          function closeModal() {
+            overlay.style.display = "none";
+            document.body.style.overflow = "";
+          }
+
+          document.addEventListener("click", function (e) {
+            var trigger = e.target.closest("[data-order-trigger]");
+            if (trigger) {
+              e.preventDefault();
+              openModal(trigger.getAttribute("data-order-trigger"));
+              return;
+            }
+            if (e.target === overlay) {
+              closeModal();
+              return;
+            }
+            if (e.target === closeBtn || e.target.closest("#order-modal-close")) {
+              closeModal();
+              return;
+            }
+            if (e.target === nextBtn) {
+              goNext();
+              return;
+            }
+            if (e.target === backBtn) {
+              goBack();
+              return;
+            }
+            var choice = e.target.closest(".om-choice");
+            if (choice) {
+              var role = choice.getAttribute("data-role");
+              var value = choice.getAttribute("data-value");
+              if (role === "tipo") state.tipo = value;
+              if (role === "entrega") state.entrega = value;
+              if (role === "pagamento") state.pagamento = value;
+              if (role === "pacote") {
+                var parts = value.split("|");
+                state.pacote = { qtd: parts[0], rotulo: parts[1] };
+              }
+              renderStep();
+              return;
+            }
+            var tab = e.target.closest(".om-tab");
+            if (tab) {
+              state.categoria = tab.getAttribute("data-cat");
+              renderStep();
+              return;
+            }
+            var qtdBtn = e.target.closest(".om-qtd-btn");
+            if (qtdBtn) {
+              var key2 = qtdBtn.getAttribute("data-key");
+              var nome2 = qtdBtn.getAttribute("data-nome");
+              var delta = parseInt(qtdBtn.getAttribute("data-delta"), 10);
+              if (!state.itens[key2]) {
+                state.itens[key2] = { nome: nome2 || key2, qtd: 0 };
+              }
+              state.itens[key2].qtd = Math.max(0, (state.itens[key2].qtd || 0) + delta);
+              renderStep();
+              return;
+            }
+          });
+
+          document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && overlay.style.display === "flex") closeModal();
+          });
+        });
+      })();
+    </script>
+
   </body>
 </html>
