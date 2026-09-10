@@ -1099,6 +1099,8 @@
               <div style="height: 220px">
                 <image-slot
                   id="galeria-1"
+                  data-photo-modal
+                  style="cursor: zoom-in"
                   shape="rounded"
                   radius="20"
                   placeholder="Foto da vitrine / estufa"
@@ -1107,6 +1109,8 @@
               <div style="height: 220px">
                 <image-slot
                   id="galeria-2"
+                  data-photo-modal
+                  style="cursor: zoom-in"
                   shape="rounded"
                   radius="20"
                   placeholder="Foto de uma bandeja de festa"
@@ -1115,6 +1119,8 @@
               <div style="height: 220px">
                 <image-slot
                   id="galeria-3"
+                  data-photo-modal
+                  style="cursor: zoom-in"
                   shape="rounded"
                   radius="20"
                   placeholder="Foto da loja por dentro"
@@ -1123,6 +1129,8 @@
               <div style="height: 220px">
                 <image-slot
                   id="galeria-4"
+                  data-photo-modal
+                  style="cursor: zoom-in"
                   shape="rounded"
                   radius="20"
                   placeholder="Foto de um pedido entregue"
@@ -1577,6 +1585,23 @@
             return match ? match[2] : "";
           }
 
+          function getPhotoUrl(trigger) {
+            if (trigger.tagName === "IMAGE-SLOT" && trigger.shadowRoot) {
+              if (!trigger.hasAttribute("data-filled")) return "";
+              var img = trigger.shadowRoot.querySelector(".frame img");
+              return (img && img.src) || "";
+            }
+            return extractUrl(getComputedStyle(trigger).backgroundImage);
+          }
+
+          function getPhotoCaption(trigger) {
+            return (
+              trigger.getAttribute("aria-label") ||
+              trigger.getAttribute("placeholder") ||
+              ""
+            );
+          }
+
           function openModal(url, caption) {
             if (!url) return;
             imgEl.src = url;
@@ -1596,8 +1621,7 @@
           document.addEventListener("click", function (e) {
             var trigger = e.target.closest("[data-photo-modal]");
             if (trigger) {
-              var url = extractUrl(getComputedStyle(trigger).backgroundImage);
-              openModal(url, trigger.getAttribute("aria-label"));
+              openModal(getPhotoUrl(trigger), getPhotoCaption(trigger));
               return;
             }
             if (e.target === overlay || e.target === closeBtn) {
@@ -1613,8 +1637,7 @@
               trigger.hasAttribute("data-photo-modal")
             ) {
               e.preventDefault();
-              var url = extractUrl(getComputedStyle(trigger).backgroundImage);
-              openModal(url, trigger.getAttribute("aria-label"));
+              openModal(getPhotoUrl(trigger), getPhotoCaption(trigger));
             }
             if (e.key === "Escape") closeModal();
           });
