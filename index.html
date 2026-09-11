@@ -1107,44 +1107,48 @@
               "
             >
               <div style="height: 220px">
-                <image-slot
+                <img
                   id="galeria-1"
+                  src="assets/galeria-vitrine.jpg"
+                  alt="Foto da vitrine / estufa"
+                  aria-label="Foto da vitrine / estufa"
                   data-photo-modal
-                  style="cursor: zoom-in"
-                  shape="rounded"
-                  radius="20"
-                  placeholder="Foto da vitrine / estufa"
-                ></image-slot>
+                  tabindex="0"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;cursor:zoom-in"
+                />
               </div>
               <div style="height: 220px">
-                <image-slot
+                <img
                   id="galeria-2"
+                  src="assets/galeria-bandeja.jpg"
+                  alt="Foto de uma bandeja de festa"
+                  aria-label="Foto de uma bandeja de festa"
                   data-photo-modal
-                  style="cursor: zoom-in"
-                  shape="rounded"
-                  radius="20"
-                  placeholder="Foto de uma bandeja de festa"
-                ></image-slot>
+                  tabindex="0"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;cursor:zoom-in"
+                />
               </div>
               <div style="height: 220px">
-                <image-slot
+                <img
                   id="galeria-3"
+                  src="assets/galeria-salgados-prontos.jpg"
+                  alt="Salgados prontos, fresquinhos do dia"
+                  aria-label="Salgados prontos, fresquinhos do dia"
                   data-photo-modal
-                  style="cursor: zoom-in"
-                  shape="rounded"
-                  radius="20"
-                  placeholder="Salgados prontos, fresquinhos do dia"
-                ></image-slot>
+                  tabindex="0"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;cursor:zoom-in"
+                />
               </div>
               <div style="height: 220px">
-                <image-slot
+                <img
                   id="galeria-4"
+                  src="assets/galeria-pedido-entregue.jpg"
+                  alt="Foto de um pedido entregue"
+                  aria-label="Foto de um pedido entregue"
                   data-photo-modal
-                  style="cursor: zoom-in"
-                  shape="rounded"
-                  radius="20"
-                  placeholder="Foto de um pedido entregue"
-                ></image-slot>
+                  tabindex="0"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;cursor:zoom-in"
+                />
               </div>
             </div>
           </div>
@@ -1584,6 +1588,9 @@
               if (!trigger.hasAttribute("data-filled")) return "";
               var img = trigger.shadowRoot.querySelector(".frame img");
               return (img && img.src) || "";
+            }
+            if (trigger.tagName === "IMG") {
+              return trigger.currentSrc || trigger.src || "";
             }
             return extractUrl(getComputedStyle(trigger).backgroundImage);
           }
