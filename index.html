@@ -757,7 +757,7 @@
                     aria-label="{{ b.nome }}"
                     data-photo-modal
                     tabindex="0"
-                    style="width:100%;height:160px;background-color:#FCD6E3;background-size:cover;background-position:top;background-image:{{ b.bg }};cursor:zoom-in"
+                    style="width:100%;height:466px;background-color:#FCD6E3;background-size:cover;background-position:top; background-image:{{ b.bg }};cursor:zoom-in"
                   ></div>
                   <div
                     style="
@@ -1212,25 +1212,6 @@
                     border: 2px solid #fcd6e3;
                     display: flex;
                     flex-direction: column;
-                    gap: 10px;
-                  "
-                >
-                  <h3 style="font-size: 22px; color: #c14364">Horário</h3>
-                  <p
-                    style="font-size: 17px; font-weight: 700; line-height: 1.5"
-                  >
-                    Todos os dias, das 09h às 22h exceto às quartas-feiras
-                    (não há atendimento)
-                  </p>
-                </div>
-                <div
-                  style="
-                    background: #fff;
-                    border-radius: 22px;
-                    padding: 24px;
-                    border: 2px solid #fcd6e3;
-                    display: flex;
-                    flex-direction: column;
                     gap: 12px;
                   "
                 >
@@ -1258,51 +1239,28 @@
                   </div>
                 </div>
               </div>
-              <div style="display: flex; flex-direction: column; gap: 18px">
+              <div style="display: flex; flex-direction: column">
                 <iframe
                   title="Mapa Bruna Salgados"
                   src="https://www.google.com/maps?q=Avenida%20Deputado%20Federal%20Antonio%20Sylvio%20Cunha%20Bueno%2C%202460%2C%20Salto%20Grande%20-%20SP%2C%2019920-224&amp;output=embed"
                   style="
                     width: 100%;
-                    min-height: 300px;
+                    height: 100%;
+                    min-height: 340px;
                     flex: 1;
                     border: 2px solid #fcd6e3;
                     border-radius: 22px;
                   "
                   loading="lazy"
                 ></iframe>
-                <div
-                  style="
-                    background: #c14364;
-                    color: #fff;
-                    border-radius: 22px;
-                    padding: 28px 24px;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 8px;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                    flex: 1;
-                    min-height: 220px;
-                  "
-                >
-                  <h3
-                    style="
-                      font-family: &quot;Baloo 2&quot;, sans-serif;
-                      font-size: 22px;
-                      font-weight: 800;
-                      color: #fcd6e3;
-                    "
-                  >
-                    Horário de funcionamento
-                  </h3>
-                  <p style="font-size: 18px; font-weight: 700; line-height: 1.5">
-                    Todos os dias, das 09h às 22h exceto às quartas-feiras
-                    (não há atendimento)
-                  </p>
-                </div>
               </div>
+            </div>
+            <div style="width: 100%; border-radius: 22px; overflow: hidden; border: 2px solid #fcd6e3">
+              <img
+                src="assets/horario.jpeg"
+                alt="Horário de funcionamento"
+                style="width: 100%; height: auto; display: block"
+              />
             </div>
           </div>
         </section>
@@ -1517,8 +1475,8 @@
           const now = new Date();
           const d = now.getDay(), h = now.getHours();
           if (d === 3) return { txt: "Hoje é quarta — fechado, mas pode encomendar", cor: "#F19831" };
-          if (h >= 9 && h < 22) return { txt: "Aberto agora até as 22h", cor: "#25D366" };
-          return { txt: "Fechado agora — abrimos às 09h", cor: "#F19831" };
+          if (h >= 9 && h < 22) return { txt: "Aberto agora até 22h", cor: "#25D366" };
+          return { txt: "Fechado agora — abrimos 09h", cor: "#F19831" };
         }
         renderVals() {
           const s = this.status();
@@ -1560,9 +1518,9 @@
             ],
             doces: ["Chocolate", "Romeu e Julieta"],
             bebidas: [
-              { nome: "Refrigerantes", desc: "Lata, 600 ml e garrafa de 2 litros, sempre gelados.", img: "assets/bebida-refrigerantes.jpg" },
-              { nome: "Água mineral", desc: "Com e sem gás.", img: "assets/bebida-agua-mineral.jpg" },
-              { nome: "Cerveja gelada", desc: "Lata e long neck para levar ou consumir na hora.", img: "assets/bebida-cerveja-gelada.jpg" },
+              { nome: "Refrigerantes", desc: "Lata, 600 ml e garrafa de 2 litros, sempre gelados.", img: "assets/bebida-refrigerante.png" },
+              { nome: "Água mineral", desc: "Com e sem gás.", img: "assets/bebida-agua.png" },
+              { nome: "Cerveja gelada", desc: "Lata e long neck para levar ou consumir na hora.", img: "assets/bebida-cerveja.png" },
               { nome: "Sucos naturais", desc: "Feitos com fruta de verdade, na hora do pedido.", img: "assets/bebida-sucos-naturais.jpg" }
             ].map(it => Object.assign({}, it, { bg: "url(" + it.img + ")" })),
             convidados: [
@@ -1638,8 +1596,7 @@
             );
           }
 
-        
-          function openModal(url, caption) {
+                  function openModal(url, caption) {
             if (!url) return;
             imgEl.src = url;
             imgEl.alt = caption || "";
@@ -1685,10 +1642,10 @@
     >
       <div
         id="order-modal-card"
-        style="background:#fff;border-radius:26px;max-width:640px;width:100%;max-height:92vh;overflow-y:auto;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,0.35);font-family:'Nunito',sans-serif;color:#7f2d20"
+        style="background:#fff;border-radius:26px;max-width:640px;width:100%;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,0.35);font-family:'Nunito',sans-serif;color:#7f2d20"
       >
         <div
-          style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 24px;border-bottom:2px solid #fcd6e3;position:sticky;top:0;background:#fff;border-radius:26px 26px 0 0;z-index:1"
+          style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 24px;border-bottom:2px solid #fcd6e3;background:#fff;flex:0 0 auto"
         >
           <div>
             <span
@@ -1710,18 +1667,18 @@
         </div>
         <div
           id="order-modal-steps"
-          style="display:flex;gap:6px;padding:14px 24px 0"
+          style="display:flex;gap:6px;padding:14px 24px 0;flex:0 0 auto"
         ></div>
         <div
           id="order-modal-body"
-          style="padding:18px 24px 6px;display:flex;flex-direction:column;gap:16px;flex:1;min-height:220px"
+          style="padding:18px 24px 6px;display:flex;flex-direction:column;gap:16px;flex:1 1 auto;overflow-y:auto;min-height:0"
         ></div>
         <div
           id="order-modal-hint"
-          style="padding:0 24px;font-size:13px;font-weight:700;color:#ce6610;min-height:18px"
+          style="padding:0 24px;font-size:13px;font-weight:700;color:#ce6610;min-height:18px;flex:0 0 auto"
         ></div>
         <div
-          style="display:flex;justify-content:space-between;gap:12px;padding:16px 24px 22px;border-top:2px solid #fcd6e3;position:sticky;bottom:0;background:#fff;border-radius:0 0 26px 26px"
+          style="display:flex;justify-content:space-between;gap:12px;padding:16px 24px 22px;border-top:2px solid #fcd6e3;background:#fff;flex:0 0 auto"
         >
           <button
             id="order-modal-back"
@@ -1759,7 +1716,41 @@
 
           var PAGAMENTOS = ["Pix", "Cartão de crédito", "Cartão de débito", "Dinheiro", "Vale-alimentação"];
 
+          var CONTACT_STORAGE_KEY = "brunaSalgadosContato";
+
+          function loadSavedContact() {
+            try {
+              var raw = localStorage.getItem(CONTACT_STORAGE_KEY);
+              if (!raw) return null;
+              var data = JSON.parse(raw);
+              if (!data || typeof data !== "object") return null;
+              return data;
+            } catch (e) {
+              return null;
+            }
+          }
+
+          function saveContact(s) {
+            try {
+              localStorage.setItem(
+                CONTACT_STORAGE_KEY,
+                JSON.stringify({
+                  nomeCliente: s.nomeCliente || "",
+                  entrega: s.entrega || null,
+                  endereco: {
+                    rua: (s.endereco && s.endereco.rua) || "",
+                    bairro: (s.endereco && s.endereco.bairro) || "",
+                    complemento: (s.endereco && s.endereco.complemento) || "",
+                    referencia: (s.endereco && s.endereco.referencia) || ""
+                  },
+                  pagamento: s.pagamento || null
+                })
+              );
+            } catch (e) {}
+          }
+
           function freshState() {
+            var saved = loadSavedContact();
             return {
               step: 0,
               tipo: null,
@@ -1767,11 +1758,18 @@
               eventoData: "",
               categoria: "salgados",
               itens: {},
-              entrega: null,
-              endereco: { rua: "", numero: "", bairro: "", complemento: "", referencia: "" },
-              pagamento: null,
-              nomeCliente: "",
-              observacoes: ""
+              entrega: (saved && saved.entrega) || null,
+              endereco: {
+                rua: (saved && saved.endereco && saved.endereco.rua) || "",
+                numero: "",
+                bairro: (saved && saved.endereco && saved.endereco.bairro) || "",
+                complemento: (saved && saved.endereco && saved.endereco.complemento) || "",
+                referencia: (saved && saved.endereco && saved.endereco.referencia) || ""
+              },
+              pagamento: (saved && saved.pagamento) || null,
+              nomeCliente: (saved && saved.nomeCliente) || "",
+              observacoes: "",
+              detalhesPersonalizado: ""
             };
           }
           var state = freshState();
@@ -1779,33 +1777,49 @@
 
           function buildCatalog() {
             var cat = { salgados: [], pasteisSalgados: [], pasteisDoces: [], bebidas: [], pacotes: [] };
+            var seen = {};
             document.querySelectorAll("#cardapio-grid article").forEach(function (art) {
               var h3 = art.querySelector("h3");
-              if (h3) {
-                var nome = h3.textContent.trim();
-                cat.salgados.push({ key: "salgado:" + nome, nome: nome });
-              }
+              if (!h3) return;
+              var nome = h3.textContent.trim();
+              var key = "salgado:" + nome;
+              if (!nome || seen[key]) return;
+              seen[key] = true;
+              cat.salgados.push({ key: key, nome: nome });
             });
             document.querySelectorAll("#pasteis-salgados-badges span").forEach(function (sp) {
               var nome = sp.textContent.trim();
-              if (nome) cat.pasteisSalgados.push({ key: "pastelsalgado:" + nome, nome: nome });
+              var key = "pastelsalgado:" + nome;
+              if (!nome || seen[key]) return;
+              seen[key] = true;
+              cat.pasteisSalgados.push({ key: key, nome: nome });
             });
             document.querySelectorAll("#pasteis-doces-badges span").forEach(function (sp) {
               var nome = sp.textContent.trim();
-              if (nome) cat.pasteisDoces.push({ key: "pasteldoce:" + nome, nome: nome });
+              var key = "pasteldoce:" + nome;
+              if (!nome || seen[key]) return;
+              seen[key] = true;
+              cat.pasteisDoces.push({ key: key, nome: nome });
             });
             document.querySelectorAll("#bebidas-grid > div").forEach(function (card) {
               var h3 = card.querySelector("h3");
-              if (h3) {
-                var nome = h3.textContent.trim();
-                cat.bebidas.push({ key: "bebida:" + nome, nome: nome });
-              }
+              if (!h3) return;
+              var nome = h3.textContent.trim();
+              var key = "bebida:" + nome;
+              if (!nome || seen[key]) return;
+              seen[key] = true;
+              cat.bebidas.push({ key: key, nome: nome });
             });
+            var seenPacote = {};
             document.querySelectorAll("#pacotes-grid > div").forEach(function (card) {
               var spans = card.querySelectorAll("span");
-              if (spans.length >= 2) {
-                cat.pacotes.push({ qtd: spans[0].textContent.trim(), rotulo: spans[1].textContent.trim() });
-              }
+              if (spans.length < 2) return;
+              var qtd = spans[0].textContent.trim();
+              var rotulo = spans[1].textContent.trim();
+              var key = qtd + "|" + rotulo;
+              if (!qtd || seenPacote[key]) return;
+              seenPacote[key] = true;
+              cat.pacotes.push({ qtd: qtd, rotulo: rotulo });
             });
             return cat;
           }
@@ -2014,9 +2028,15 @@
             }
 
             if (key === "final") {
+              var isCustom = state.tipo === "encomenda" && state.pacote && state.pacote.qtd === "Você escolhe";
               body.innerHTML =
                 '<h4 style="font-size:18px;color:#c14364;margin:0">Últimos dados</h4>' +
                 labelInput("Seu nome", "om-nome", state.nomeCliente) +
+                (isCustom
+                  ? '<label style="display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14px">Detalhe os salgados e quantidades desejados' +
+                    '<textarea id="om-detalhes" rows="3" placeholder="Ex: 20 coxinhas, 15 kibes, 10 bolinhos de queijo" style="padding:12px 14px;border-radius:12px;border:2px solid #fcd6e3;font-size:15px;font-family:\'Nunito\',sans-serif;resize:vertical">' + esc(state.detalhesPersonalizado) + "</textarea>" +
+                    "</label>"
+                  : "") +
                 '<label style="display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14px">Observações (opcional)' +
                 '<textarea id="om-obs" rows="2" style="padding:12px 14px;border-radius:12px;border:2px solid #fcd6e3;font-size:15px;font-family:\'Nunito\',sans-serif;resize:vertical">' + esc(state.observacoes) + "</textarea>" +
                 "</label>" +
@@ -2033,6 +2053,7 @@
               lines.push("🎉 Encomenda para festa");
               if (state.pacote) lines.push("📦 Pacote: " + state.pacote.qtd + " " + state.pacote.rotulo);
               if (state.eventoData) lines.push("📅 Data do evento: " + state.eventoData);
+              if (state.detalhesPersonalizado) lines.push("📝 Itens desejados: " + state.detalhesPersonalizado);
             } else {
               lines.push("🛒 Itens do pedido:");
               var any = false;
@@ -2087,8 +2108,10 @@
             if (key === "final") {
               var nome = document.getElementById("om-nome");
               var obs = document.getElementById("om-obs");
+              var detalhes = document.getElementById("om-detalhes");
               if (nome) state.nomeCliente = nome.value;
               if (obs) state.observacoes = obs.value;
+              if (detalhes) state.detalhesPersonalizado = detalhes.value;
             }
           }
 
@@ -2104,6 +2127,9 @@
             }
             if (key === "pagamento" && !state.pagamento) return "Escolha a forma de pagamento.";
             if (key === "final" && !state.nomeCliente) return "Informe seu nome.";
+            if (key === "final" && state.tipo === "encomenda" && state.pacote && state.pacote.qtd === "Você escolhe" && !state.detalhesPersonalizado) {
+              return "Detalhe os salgados e quantidades desejados.";
+            }
             return null;
           }
 
@@ -2133,6 +2159,7 @@
           }
 
           function submitOrder() {
+            saveContact(state);
             var msg = buildMessage();
             var url = "https://wa.me/" + findWaNumber() + "?text=" + encodeURIComponent(msg);
             window.open(url, "_blank", "noopener");
@@ -2140,7 +2167,7 @@
           }
 
           function openModal(trigger) {
-            if (!catalog) catalog = buildCatalog();
+            catalog = buildCatalog();
             state = freshState();
             if (trigger === "encomenda") {
               state.tipo = "encomenda";
@@ -2159,34 +2186,11 @@
               state.step = 1;
             }
             renderStep();
-            overlay.style.display = "flex";
-            lockScroll();
-          }
-
-          function lockScroll() {
-            var y = window.scrollY || window.pageYOffset || 0;
-            document.body.dataset.scrollLockYOrder = String(y);
-            document.body.style.position = "fixed";
-            document.body.style.top = "-" + y + "px";
-            document.body.style.left = "0";
-            document.body.style.right = "0";
-            document.body.style.width = "100%";
-          }
-
-          function unlockScroll() {
-            var y = parseInt(document.body.dataset.scrollLockYOrder || "0", 10);
-            document.body.style.position = "";
-            document.body.style.top = "";
-            document.body.style.left = "";
-            document.body.style.right = "";
-            document.body.style.width = "";
-            delete document.body.dataset.scrollLockYOrder;
-            window.scrollTo(0, y);
+            overlay.style.display = "flex";            
           }
 
           function closeModal() {
             overlay.style.display = "none";
-            unlockScroll();
           }
 
           document.addEventListener("click", function (e) {
