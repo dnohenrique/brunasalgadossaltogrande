@@ -1390,7 +1390,7 @@
                 "
                 >Atendimento</span
               >
-              <span>Todos os dias, 9h às 22h</span>
+              <span>Todos os dias, das 9h às 22h</span>
               <span>Quarta-feira fechado</span>
               <span>Retirada no local e entrega</span>
             </div>
@@ -1948,7 +1948,7 @@
                   return choiceBtn({
                     role: "pacote",
                     value: p.qtd + "|" + p.rotulo,
-                    label: p.qtd + '<br><span style="font-weight:600;font-size:12px">' + esc(p.rotulo) + "</span>",
+                    label: p.qtd ,
                     selected: !!(state.pacote && state.pacote.qtd === p.qtd)
                   });
                 })
@@ -2041,7 +2041,7 @@
                 labelInput("Seu nome", "om-nome", state.nomeCliente) +
                 (isCustom
                   ? '<label style="display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14px">Detalhe os salgados e quantidades desejados' +
-                    '<textarea id="om-detalhes" rows="3" placeholder="Ex: 20 coxinhas, 15 kibes, 10 bolinhos de queijo" style="padding:12px 14px;border-radius:12px;border:2px solid #fcd6e3;font-size:15px;font-family:\'Nunito\',sans-serif;resize:vertical">' + esc(state.detalhesPersonalizado) + "</textarea>" +
+                    '<textarea id="om-detalhes" rows="3" placeholder="Ex: 20 coxinhas, 15 kibes, 10 bolinhas de queijo" style="padding:12px 14px;border-radius:12px;border:2px solid #fcd6e3;font-size:15px;font-family:\'Nunito\',sans-serif;resize:vertical">' + esc(state.detalhesPersonalizado) + "</textarea>" +
                     "</label>"
                   : "") +
                 '<label style="display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14px">Observações (opcional)' +
@@ -2058,7 +2058,7 @@
             var lines = ["Olá! Quero fazer um pedido pelo site da Bruna Salgados:", ""];
             if (state.tipo === "encomenda") {
               lines.push("🎉 Encomenda para festa");
-              if (state.pacote) lines.push("📦 Pacote: " + state.pacote.qtd + " " + state.pacote.rotulo);
+              if (state.pacote) lines.push("📦 Pacote: " + state.pacote.qtd );
               if (state.eventoData) lines.push("📅 Data do evento: " + state.eventoData);
               if (state.detalhesPersonalizado) lines.push("📝 Itens desejados: " + state.detalhesPersonalizado);
             } else {
